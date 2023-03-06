@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 15px auto;
+}
+
+.img-title {
+  width: 150px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.game-board {
+  /*display: none;*/
+
+  width: 80%;
+  height: 500px;
+  border-bottom: 15px solid rgb(35, 160, 35);
+  box-shadow: 5px 5px 5px 5px rgba(37, 37, 37, 0.5);
+  /*margin: 0 auto;*/
+  position: relative;
+  background: linear-gradient(#87ceeb, #e0f6ff);
+
+  /*A propriedade overflow define o comportamento de 
+  um elemento quando suas dimensões são excedidas 
+  pelo conteúdo.*/
+  overflow: hidden;
+}
+
+.pipe {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+
+  /*RIGHT: essa propriedade posiciona o elento a direita, 
+  quanto maior o valor definido, mais o elemnto se 
+  desloca para a esquerda, ou seja, para mais distante 
+  do eixo zero a direita.
+  INFINITE para tornar a animação infinita
+  LINEAR para manter a velocidade do movimento do elemento
+  */
+  animation: pipe-animation 1.8s infinite linear;
+}
+
+.mario {
+  width: 150px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.jump {
+  animation: jump 500ms;
+}
+
+.clouds {
+  width: 250px;
+  margin-top: 20px;
+  position: absolute;
+  animation: clouds-animation 10s infinite linear;
+}
+
+/*KEYFRAMES: são regras definidas, ao criar a estilização 
+de um elemento, para lidarmos com mudanças de propriedades 
+no CSS durante o processo de animação.*/
+@keyframes pipe-animation {
+  from {
+    /*Está com o valor negativo para que haja o movimento
+    de transição da direita da tela, como se estivesse saindo de 
+    trás do lado direito do quadro, e o valor 80px que é o 
+    mesmo tamanho do pipe.*/
+    right: -80px;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+@keyframes jump {
+  /*O percentual usado abaixo se refere ao tempo de execução 
+  do JUMP*/
+  0% {
+    bottom: 0;
+  }
+  40% {
+    bottom: 150px;
+  }
+  50% {
+    bottom: 150px;
+  }
+  60% {
+    bottom: 150px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes clouds-animation {
+  from {
+    right: -250px;
+  }
+  to {
+    right: 100%;
+  }
+}
